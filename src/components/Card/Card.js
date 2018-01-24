@@ -4,27 +4,21 @@ import './Card.css';
 
 
 
-const TagOverlay = ({tags,tagClick}) => {
+const TagOverlay = ({tags}) => {
   return (
     <div className="tag-overlay">
-      <button 
-        className="badge badge-primary-new" 
-        id="new">+  
-      </button>
+      <a id='new' href="" className="tag-new">+</a>
       
       {tags.map((elem,i) => {
         return (
-          <span className="tag-container">
-            <a href="" className="del-tag"><span>.</span>x<span>.</span></a>
-            <a href="" className="tag-click">{elem}</a>
+          <span key={i} className="tag-container">
+            <a id='del' href="" className="del-tag">x</a>
+            <a id='tag' href="" className="tag-click">{elem}</a>
           </span>
           )
       })}
-
-      <button 
-        className="badge badge-primary-close" 
-        id="img">close
-      </button>
+      <br/>
+      <a id='close' href="" className="tag-close">close</a>
 
     </div>
     )
@@ -38,19 +32,29 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      show: true
+      show: false
     }
     this.showTagOverlay=this.showTagOverlay.bind(this);
   }
 
 
   showTagOverlay(e){
-    const {id} = e.target;
+    e.preventDefault();
+    const {id, innerText} = e.target;
+    if(id === 'close'){
+      this.setState({show: !this.state.show})
+    }
     if(id === 'img'){
       this.setState({show: !this.state.show})
     }
     if(id === 'new'){
-      
+      console.log('new');
+    }
+    if(id === 'tag'){
+      console.log(innerText);
+    }
+    if(id === 'del'){
+      console.log('delete');
     }
     
   }
