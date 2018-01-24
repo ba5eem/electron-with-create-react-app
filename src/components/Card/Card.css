@@ -2,6 +2,7 @@
     position: absolute;
     width: 200px;
     height: 200px;
+    background: rgb(128, 139, 210);
     background-color: rgba(128, 139, 210, 0.5);
 
 }
@@ -10,4 +11,15 @@
     background-color: #2780E3;
     margin: 5px;
 
+}
+
+.badge-primary-close {
+    background-color: tomato;
+    border: transparent;
+
+}
+
+.badge-primary-new {
+    background-color: lightgreen;
+    border: transparent;
 }
