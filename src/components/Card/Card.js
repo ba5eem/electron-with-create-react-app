@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
 import './Card.css';
 
-const src = 'https://d30y9cdsu7xlg0.cloudfront.net/png/157453-200.png';
 
-const tags = ['onssssssse', 'twsssssso', 'threethreethree','one', 'two', 'three','one', 'two', 'three']
 
-const TagOverlay = ({tagClick}) => {
+
+const TagOverlay = ({tags,tagClick}) => {
   return (
     <div className="tag-overlay">
-    <button className="badge badge-primary-new" id="new">  +  </button>
+      <button 
+        className="badge badge-primary-new" 
+        id="new">+  
+      </button>
+      
       {tags.map((elem,i) => {
         return (
-          <span key={i} id={i} onClick={(e)=>tagClick(e)} className="badge badge-primary">x {elem}</span>
+          <span className="tag-container">
+            <a href="" className="del-tag"><span>.</span>x<span>.</span></a>
+            <a href="" className="tag-click">{elem}</a>
+          </span>
           )
       })}
 
-    <button className="badge badge-primary-close" id="img">close</button>
+      <button 
+        className="badge badge-primary-close" 
+        id="img">close
+      </button>
+
     </div>
     )
 }
@@ -40,7 +50,7 @@ class Card extends Component {
       this.setState({show: !this.state.show})
     }
     if(id === 'new'){
-      console.log('newww')
+      
     }
     
   }
@@ -55,10 +65,25 @@ class Card extends Component {
 
   render() {
     const { show } = this.state;
+    const {id,source, tags} = this.props.src;
+
     return (
-      <div className="img-container" id="img" onClick={(e)=>this.showTagOverlay(e)}>
-      {show ? <TagOverlay tagClick={this.showTagOverlay}/> : null }
-        <img id="img" src={src} alt="" style={image}/>
+      <div
+        className="img-container" 
+        id="img" 
+        onClick={(e)=>this.showTagOverlay(e)}>
+
+        {show ? 
+        <TagOverlay 
+          tags={tags} 
+          tagClick={this.showTagOverlay}/> 
+        : null }
+
+        <img 
+          id="img" 
+          src={source} 
+          alt="" 
+          style={image}/>
         
       </div>
 

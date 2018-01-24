@@ -4,6 +4,7 @@
     height: 200px;
     background: rgb(128, 139, 210);
     background-color: rgba(128, 139, 210, 0.5);
+    display: flex-wrap;
 
 }
 
@@ -16,10 +17,37 @@
 .badge-primary-close {
     background-color: tomato;
     border: transparent;
+    font-size: 1rem;
 
 }
 
 .badge-primary-new {
     background-color: lightgreen;
     border: transparent;
+}
+
+.tag-container {
+    max-width: 190px;
+    display: inline-block;
+    margin: 5px;
+}
+
+.del-tag{
+    margin-left: 5px;
+    background-color: cornflowerblue;
+    border: transparent;
+    font-size: 1rem;
+    color: black;
+}
+
+.del-tag span{
+    visibility: hidden;
+}
+
+.tag-click{
+    background-color: cornflowerblue;
+    color: white;
+    border: transparent;
+    font-size: 1rem;
+
 }
