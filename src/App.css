@@ -22,3 +22,41 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.main {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  max-width: 100%;
+}
+
+.wrap    { 
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+} 
+
+.img-container {
+  background: tomato;
+  padding: 4px;
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.image-header {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
