@@ -1,34 +1,63 @@
 import React, { Component } from 'react';
-import '../../App.css';
+import './Header.css';
 
+const searchIcon = 'http://bit.ly/2E8L1NW';
+const profileIcon = 'http://bit.ly/2nfmDmL';
+const notificationIcon = 'http://bit.ly/2BtJKxZ';
 
-const HeaderView = ({changeView,title}) => {
-  return(
-        <li className="nav-item">
-          <a onClick={changeView} className="nav-link" href="">{title}</a>
-        </li>
+const Logo = ({logo}) => {
+  return <h1>{logo}</h1>
+}
+
+const SearchBar = () => {
+  return (
+    <div>
+      <img className='header-search-bar' src={searchIcon} alt=""/>
+      <input 
+        className='header-search-bar input'
+        placeholder="Search" 
+        type="text"/>
+    </div>
     )
 }
 
+const Link = ({link}) => {
+  return (<a className="link-header" href="">{link}</a>)
+}
+
+const Profile = ({}) => {
+  return (<img className='header-profile' src={profileIcon} alt=""/>)
+}
+
+const Notification = ({}) => {
+  return (<img className='header-notification' src={notificationIcon} alt=""/>)
+}
+
+
 
 class Header extends Component {
+  constructor(props){
+    super(props);
 
-  render() {
-    const {changeView} = this.props;
-    const views = ['Images', 'Notes', 'Articles', 'Random'];
-    return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a onClick={changeView} className="navbar-brand" href="">organiZhit</a>
-          <ul className="navbar-nav">
-              {views.map((elem,i) => {
-                return <HeaderView key={i} title={elem} changeView={changeView} />
-              })}
-            </ul>
-          <input type="text" onChange={this.props.tagSearch} placeholder="Search by tag:"/>
-        </nav>
-      </div>
-    );
+    this.state = {
+
+    }
+  }
+
+  render(){
+    return(
+        <div>
+          <nav className="navbar-header">
+            <Logo logo='B'/>
+            <SearchBar />
+            <Link link="Home"/>
+            <Link link="Explore"/>
+            <Profile />
+            <Notification />
+          </nav>
+          
+        </div>
+      )
   }
 }
 

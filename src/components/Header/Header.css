@@ -1,0 +1,81 @@
+body {
+  font-family: 'Taviraj', serif;
+  font-size: 1em;
+}
+
+
+.link-header {
+  color: black;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  text-decoration: none!important;
+}
+
+
+
+.navbar-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  height: 20%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.navbar-header h1{
+  color: black;
+  margin-left: 1rem;
+  margin-right: 2rem;
+  margin-top: 0.6rem;
+}
+
+.header-search-bar {
+  background-color: lightgrey;
+  border: transparent;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  padding: 5px;
+  vertical-align: middle;
+
+
+}
+
+.input {
+  background-color: lightgrey;
+  width: 80%;
+}
+
+.input:focus {
+  outline: none;
+  caret-color: blue;
+  color: grey;
+}
+
+.header-profile {
+  border: transparent;
+  height: 3rem;
+  font-size: 1.5rem;
+  width: 3rem;
+  padding: 5px;
+  vertical-align: middle;
+  margin-left: 2rem;
+}
+
+.header-profile:hover{
+
+}
+
+.header-notification {
+  border: transparent;
+  height: 3rem;
+  font-size: 1.5rem;
+  width: 3rem;
+  padding: 5px;
+  vertical-align: middle;
+  margin-left: 2rem;
+
+}
+
