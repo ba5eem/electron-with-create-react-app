@@ -1,4 +1,4 @@
-import { LOAD_IMAGES, ADD_TAG, ADD_IMAGE, DEL_TAG } from '../actions';
+import { LOAD_IMAGES, ADD_TAG, ADD_IMAGE, DEL_TAG } from '../actions/imageActions';
 import {data} from './data';
 
 

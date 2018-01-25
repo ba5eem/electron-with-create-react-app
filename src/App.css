@@ -77,3 +77,10 @@
   opacity: 0.5;
 }
 
+.nav-link {
+  font-size: 1.2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}

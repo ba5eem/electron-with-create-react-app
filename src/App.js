@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {loadImages, addTag, addImage,removeTag} from './actions';
+import {loadImages, addTag, addImage,removeTag} from './actions/imageActions';
+import {loadNotes} from './actions/noteActions';
 import logo from './logo.svg';
 import './App.css';
 import { Header } from './components';
-import { RenderImages,tagFilter } from './App.components';
+import { RenderImages, RenderNotes, tagFilter } from './App.components';
 
 
 
@@ -14,7 +15,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      view: 'Images',
+      view: 'Notes',
       tag: undefined
     }
 
@@ -28,6 +29,7 @@ class App extends Component {
 
   componentWillMount() {
     this.props.loadImages();
+    this.props.loadNotes();
   }
 
   changeView(e){
@@ -69,9 +71,10 @@ class App extends Component {
 
   render() {
     const { view,tag } = this.state;
-    const data = this.props.images
-    let images = tagFilter(data,tag);
-    let notFound = images.length === 0 ? true : false;
+    const {images,notes} = this.props;
+    let imageData = tagFilter(images,tag);
+    let notFound = imageData.length === 0 ? true : false;
+    let noteData = tagFilter(notes,tag);
     
     switch(view) {
       case 'Images':
@@ -86,13 +89,13 @@ class App extends Component {
               deleteTag={this.deleteTag}
               tagSearch={this.tagSearch} 
               notFound={notFound}
-              images={images} />
+              images={imageData} />
           </div> )
       case 'Notes':
         return (
           <div>
             <Header changeView={(e)=>this.changeView(e)}/>
-            <h1>Notes</h1>
+            <RenderNotes notes={noteData}/>
           </div> )
       case 'Articles':
         return (
@@ -118,7 +121,8 @@ class App extends Component {
 
 function mapStateToProps(state){
   return{
-    images: state.images
+    images: state.images,
+    notes: state.notes
   }
 }
 
@@ -127,7 +131,8 @@ function mapDispatchToProps(dispatch){
     loadImages: loadImages,
     addTag: addTag,
     addImage:addImage,
-    removeTag:removeTag
+    removeTag:removeTag,
+    loadNotes: loadNotes
   },dispatch)
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Main, Header, Images, Notes } from './components';
 
+const addSrc = 'http://bit.ly/2DDvgSf';
 
 
 
@@ -25,6 +26,26 @@ export const RenderImages = ({notFound,tagSearch,deleteTag,addNewImage,addNewTag
             : null }
         </div>
         )
+}
+
+
+export const RenderNotes = ({notes}) => {
+  return(
+      <div className="main wrap">
+        <img 
+          className="img" 
+          src={addSrc} 
+          alt=""/>
+        {notes.map((elem,i) => {
+          return (
+            <Notes
+              key={i}  
+              src={elem} />
+            )
+        })}
+      </div>
+
+    )
 }
 
 
