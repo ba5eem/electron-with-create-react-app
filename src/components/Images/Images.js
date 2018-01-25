@@ -1,89 +1,6 @@
 import React, { Component } from 'react';
 import './Images.css';
-
-
-
-const TagOverlay = ({obj}) => {
-  return (
-    <div className="tag-overlay">
-      <a id='new' href="" className="tag-new">+</a>
-      
-      {obj.tags.map((elem,i) => {
-        return (
-          <span key={i} className="tag-container">
-            <a id='del' href="" className="del-tag">x</a>
-            <a id='tag' href="" className="tag-click">{elem}</a>
-          </span>
-          )
-      })}
-      <br/>
-      <a id='close' href="" className="tag-close">close</a>
-
-    </div>
-    )
-}
-
-const AddNewTagOverlay = ({obj,addNewTag,handleTag}) => {
-  return (
-    <div className="add-overlay">
-      <br/>
-      <form>
-        <input 
-          type="text" 
-          className="add-tag-input"
-          onChange={handleTag} 
-          placeholder="tag:"/>
-        <br/>
-        <input 
-          onClick={addNewTag} 
-          id='cancel' 
-          type="button" 
-          className="add-tag-button" 
-          value="nah"/>
-        <span className="add-tag-span">....</span>
-        <input 
-          type="submit" 
-          id='add'
-          name={obj.id} 
-          onClick={addNewTag}
-          className="add-tag-button" 
-          value="add"/>
-      </form>
-    </div>
-    )
-}
-
-const AddNewImageUrl = ({obj,addNewImage,handleImgUrl}) => {
-  return (
-    <div className="add-overlay">
-      <br/>
-      <form>
-        <input 
-          type="text" 
-          className="add-tag-input"
-          onChange={handleImgUrl} 
-          placeholder="url:"/>
-        <br/>
-        <input 
-          onClick={addNewImage} 
-          id='cancel' 
-          type="button" 
-          className="add-tag-button" 
-          value="nah"/>
-        <span className="add-tag-span">....</span>
-        <input 
-          type="submit" 
-          id='add'
-          name={obj.id} 
-          onClick={addNewImage}
-          className="add-tag-button" 
-          value="add"/>
-      </form>
-    </div>
-    )
-}
-
-
+import { TagOverlay, AddNewTagOverlay, AddNewImageUrl } from './Images.components';
 
 
 class Images extends Component {
@@ -102,13 +19,12 @@ class Images extends Component {
     this.handleTag=this.handleTag.bind(this);
     this.handleImgUrl=this.handleImgUrl.bind(this);
     this.addNewImage=this.addNewImage.bind(this);
-    console.log(this.props)
   }
 
 
   showTagOverlay(e){
     e.preventDefault();
-    const {id, innerText,className} = e.target;
+    const {id, innerText,className,name,title} = e.target;
     if(id === 'close'){
       this.setState({show: !this.state.show})
     }
@@ -123,7 +39,7 @@ class Images extends Component {
       console.log(innerText);
     }
     if(id === 'del'){
-      console.log('delete');
+      this.props.deleteTag(name,title);
     }
     if(className === 'newImage'){
       this.setState({newImg: !this.state.newImg})

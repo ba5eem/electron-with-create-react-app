@@ -1,4 +1,4 @@
-import { LOAD_IMAGES, ADD_TAG, ADD_IMAGE } from '../actions';
+import { LOAD_IMAGES, ADD_TAG, ADD_IMAGE, DEL_TAG } from '../actions';
 import {data} from './data';
 
 
@@ -24,6 +24,25 @@ const images = (state = [], action) => {
     case ADD_IMAGE:
       let x = [...data,action.payload];
       return x;
+    case DEL_TAG:
+      let y = data.filter((elem, i) => {
+        return elem.id === parseInt(action.payload.id);
+      })
+      let tags = y[0].tags;
+      let arr;
+      for(var i = 0; i < tags.length; i++){
+        if(tags[i] === action.payload.tag){
+          let idx = tags[i];
+          arr = tags.slice(idx,tags.length);
+        }
+      }
+
+      console.log(arr);
+
+
+
+
+      
     default:
       return state;
   }

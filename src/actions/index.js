@@ -3,6 +3,7 @@
 export const LOAD_IMAGES = 'LOAD_IMAGES';
 export const ADD_TAG = 'ADD_TAG';
 export const ADD_IMAGE = 'ADD_IMAGE';
+export const DEL_TAG = 'DEL_TAG';
 
 
 export const loadImages = () => {
@@ -32,6 +33,17 @@ export const addImage = (url) => {
   }
   return{
     type: ADD_IMAGE,
+    payload: local
+  }
+}
+
+export const removeTag = (id,tag) => {
+  let local = {
+    id: id,
+    tag: tag
+  }
+  return{
+    type: DEL_TAG,
     payload: local
   }
 }
