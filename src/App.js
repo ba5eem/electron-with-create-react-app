@@ -8,18 +8,21 @@ import { Header } from './components';
 import { RenderImages } from './App.components';
 
 
+
 class App extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      view: 'Images'
+      view: 'Images',
+      tag: undefined
     }
 
     this.changeView=this.changeView.bind(this)
     this.addNewTag=this.addNewTag.bind(this)
     this.addNewImage=this.addNewImage.bind(this)
     this.deleteTag=this.deleteTag.bind(this)
+    this.tagSearch=this.tagSearch.bind(this)
   }
 
   componentWillMount() {
@@ -30,6 +33,7 @@ class App extends Component {
     e.preventDefault();
     const { innerText } = e.target;
     this.setState({view: innerText})
+    this.setState({tag: undefined})
     this.props.location.pathname = '/'+innerText;
   }
 
@@ -45,12 +49,31 @@ class App extends Component {
     this.props.removeTag(id,tag);
   }
 
+  tagSearch(tag){
+    this.setState({tag: tag})
+  }
+
 
 
 
   render() {
-    const { view } = this.state;
-    const { images } = this.props;
+    const { view,tag } = this.state;
+    const data = this.props.images
+    let images = data;
+    let idx;
+    data.map((elem,i) => {
+      elem.tags.filter(elem => {
+        if(elem === tag){
+          idx = i;
+        }
+      })
+    })
+    if(idx !== undefined){
+      images = data.filter((elem,i) => {
+        return elem.id === idx;
+      })
+    }
+
     switch(view) {
       case 'Images':
         return (
@@ -59,7 +82,8 @@ class App extends Component {
             <RenderImages 
               addNewTag={this.addNewTag}
               addNewImage={this.addNewImage}
-              deleteTag={this.deleteTag} 
+              deleteTag={this.deleteTag}
+              tagSearch={this.tagSearch} 
               images={images} />
           </div> )
       case 'Notes':

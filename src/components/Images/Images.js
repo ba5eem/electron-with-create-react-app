@@ -35,8 +35,7 @@ class Images extends Component {
       this.setState({add: !this.state.add})
     }
     if(id === 'tag'){
-      //this will show all data that matches the tag
-      console.log(innerText);
+      this.props.tagSearch(innerText);
     }
     if(id === 'del'){
       this.props.deleteTag(name,title);
@@ -93,7 +92,9 @@ class Images extends Component {
 
   render() {
     const { show, add, newImg } = this.state;
-    const {id,source} = this.props.src;
+    const { src } = this.props;
+
+
     return (
       <div
         className='img-container' 
@@ -102,20 +103,20 @@ class Images extends Component {
 
         {show ? 
         <TagOverlay 
-          obj={this.props.src}
+          obj={src}
           tagClick={this.showTagOverlay}/> 
         : null }
 
         {add ? 
         <AddNewTagOverlay
-          obj={this.props.src} 
+          obj={src} 
           handleTag={this.handleTag} 
           addNewTag={this.addNewTag} /> 
         : null }
 
         {newImg ? 
         <AddNewImageUrl
-          obj={this.props.src} 
+          obj={src} 
           handleImgUrl={this.handleImgUrl} 
           addNewImage={this.addNewImage} /> 
         : null }
@@ -123,9 +124,9 @@ class Images extends Component {
 
         <img 
           id="img" 
-          src={source} 
+          src={src.source} 
           alt=""
-          className={id} 
+          className={src.id} 
           style={image}/>
         
       </div>
