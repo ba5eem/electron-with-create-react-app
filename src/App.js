@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {loadImages} from './actions';
+import {loadImages, addTag} from './actions';
 import logo from './logo.svg';
 import './App.css';
 import { Header } from './components';
@@ -17,6 +17,7 @@ class App extends Component {
     }
 
     this.changeView=this.changeView.bind(this)
+    this.addNewTag=this.addNewTag.bind(this)
   }
 
   componentWillMount() {
@@ -30,6 +31,10 @@ class App extends Component {
     this.props.location.pathname = '/'+innerText;
   }
 
+  addNewTag(id,tag){
+    this.props.addTag(id, tag)
+  }
+
 
 
 
@@ -41,7 +46,7 @@ class App extends Component {
         return (
           <div>
             <Header changeView={(e)=>this.changeView(e)}/>
-            <RenderImages images={images} />
+            <RenderImages addNewTag={this.addNewTag} images={images} />
           </div> )
       case 'Notes':
         return (
@@ -80,6 +85,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     loadImages: loadImages,
+    addTag: addTag,
   },dispatch)
 }
 

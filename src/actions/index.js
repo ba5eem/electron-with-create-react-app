@@ -1,7 +1,7 @@
 //const axios = require('axios');
 
 export const LOAD_IMAGES = 'LOAD_IMAGES';
-
+export const ADD_TAG = 'ADD_TAG';
 
 
 export const loadImages = () => {
@@ -9,6 +9,17 @@ export const loadImages = () => {
   return{
     type: LOAD_IMAGES,
     payload: images
+  }
+}
+
+export const addTag = (id,tag) => {
+  let local = {
+    id: id,
+    tag: tag
+  }
+  return{
+    type: ADD_TAG,
+    payload: local
   }
 }
 

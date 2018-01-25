@@ -4,12 +4,12 @@ import { Main, Header, Images, Notes } from './components';
 
 
 
-export const RenderImages = ({images}) => {
+export const RenderImages = ({addNewTag, images}) => {
   return (
       <div className="main wrap">
           {images.map((elem,i) => {
             return (
-              <Images key={i}  src={elem}/>
+              <Images addNewTag={addNewTag} key={i}  src={elem}/>
               )
             }) 
           }

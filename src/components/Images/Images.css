@@ -73,3 +73,49 @@
     padding-right: 5px;
     margin-left: 3px;
 }
+
+
+.add-overlay {
+    position: absolute;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: blue;
+    z-index: 10;
+    background: rgb(128, 139, 210);
+    background-color: rgba(128, 139, 210, 0.7);
+}
+
+.add-tag-input{
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    font-size: 3rem;
+    border: transparent;
+    text-decoration: none!important;
+}
+
+.nah-tag-button {
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+    text-decoration: none!important;
+    border: transparent;
+}
+
+.add-tag-button {
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+    text-decoration: none!important;
+    border: transparent;
+}
+
+.add-tag-span {
+    visibility: hidden;
+}
