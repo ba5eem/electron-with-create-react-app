@@ -22,3 +22,26 @@ export const RenderImages = ({tagSearch,deleteTag,addNewImage,addNewTag, images}
         </div>
         )
 }
+
+
+export function tagFilter(data,tag){
+  let images = [];
+    let idx = [];
+    data.map((elem,i) => {
+      elem.tags.filter(elem => {
+        if(elem === tag){
+          console.log(i);
+          idx.push(i);
+        }
+      })
+    })
+    if(tag !== undefined){
+        idx.map(i => {
+        images.push(data[i])
+      })
+    }
+    else{
+      images = data;
+    }
+    return images;
+}

@@ -5,7 +5,7 @@ import {loadImages, addTag, addImage,removeTag} from './actions';
 import logo from './logo.svg';
 import './App.css';
 import { Header } from './components';
-import { RenderImages } from './App.components';
+import { RenderImages,tagFilter } from './App.components';
 
 
 
@@ -59,28 +59,8 @@ class App extends Component {
   render() {
     const { view,tag } = this.state;
     const data = this.props.images
-    let images = [];
-    let idx = [];
-    data.map((elem,i) => {
-      elem.tags.filter(elem => {
-        if(elem === tag){
-          console.log(i);
-          idx.push(i);
-        }
-      })
-    })
-    if(tag !== undefined){
-        idx.map(i => {
-        images.push(data[i])
-      })
-    }
-    else{
-      images = data;
-    }
+    let images = tagFilter(data,tag);
     
-
-    
-
     switch(view) {
       case 'Images':
         return (
