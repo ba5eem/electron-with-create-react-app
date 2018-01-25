@@ -31,6 +31,7 @@
 .content-container img{
   width: 200px;
   height: 200px;
+  border-radius: 5px;
 }
 
 .content-onhover{
@@ -47,16 +48,14 @@
   margin-top: 10px;
   margin-left: 10px;
   max-height: 20px;
-
-
-
 }
 
 .content-onhover:hover {
-  background-color: red;
+  background: rgb(128, 139, 210);
+  background-color: rgba(128, 139, 210, 0.5);
 }
 
-.del-tag, .tag-click, .add-tag{
+.del-tag, .tag-click, .add-tag, .link-tag{
   visibility: hidden;
 }
 
@@ -94,3 +93,16 @@
     margin-left: 3px;
     visibility: visible;
 }
+
+.content-onhover:hover .link-tag {
+    background-color: orange;
+    color: white;
+    border: transparent;
+    font-size: 1rem;
+    text-decoration: none!important;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 3px;
+    visibility: visible;
+}
+
