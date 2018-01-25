@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Card.css';
+import './Images.css';
 
 
 
@@ -27,7 +27,7 @@ const TagOverlay = ({tags}) => {
 
 
 
-class Card extends Component {
+class Images extends Component {
   constructor(props){
     super(props);
 
@@ -113,7 +113,7 @@ const { image } = style;
 
 
 
-export default Card;
+export default Images;
 
 
 

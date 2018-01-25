@@ -19,7 +19,7 @@ class Header extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="">organiZhit</a>
+          <a onClick={changeView} className="navbar-brand" href="">organiZhit</a>
           <ul className="navbar-nav">
               {views.map((elem,i) => {
                 return <HeaderView key={i} title={elem} changeView={changeView} />

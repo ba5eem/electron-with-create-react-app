@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {loadImages} from './actions';
 import logo from './logo.svg';
 import './App.css';
-import { Main, Header,Card, Notes } from './components';
-
-const src = 'https://d30y9cdsu7xlg0.cloudfront.net/png/157453-200.png';
-const images = [{id: "01", source: src, tags:['1','sssss','one','two','three']}, {id: "02", source: src, tags:['a','b','c']}];
-
-const RenderImages = () => {
-  return (
-
-      <div className="main wrap">
-          {images.map((elem,i) => {
-            return (
-              <Card key={i}  src={elem}/>
-              )
-            }) 
-          }
-        </div>
-        )
-}
-
+import { Header } from './components';
+import { RenderImages } from './App.components';
 
 
 class App extends Component {
@@ -33,11 +19,15 @@ class App extends Component {
     this.changeView=this.changeView.bind(this)
   }
 
+  componentWillMount() {
+    this.props.loadImages();
+  }
 
   changeView(e){
     e.preventDefault();
     const { innerText } = e.target;
     this.setState({view: innerText})
+    this.props.location.pathname = '/'+innerText;
   }
 
 
@@ -45,12 +35,13 @@ class App extends Component {
 
   render() {
     const { view } = this.state;
+    const { images } = this.props;
     switch(view) {
       case 'Images':
         return (
           <div>
             <Header changeView={(e)=>this.changeView(e)}/>
-            <RenderImages />
+            <RenderImages images={images} />
           </div> )
       case 'Notes':
         return (
@@ -70,7 +61,7 @@ class App extends Component {
             <Header changeView={(e)=>this.changeView(e)}/>
             <h1>Random</h1>
           </div> )
-      case 'Home':
+      case 'organiZhit':
         return (
           <div>
             <Header changeView={(e)=>this.changeView(e)}/>
@@ -80,4 +71,17 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  return{
+    images: state.images
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    loadImages: loadImages,
+  },dispatch)
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
