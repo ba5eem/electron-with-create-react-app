@@ -1,37 +1,9 @@
 import React, { Component } from 'react';
 import './Header.css';
+import { Logo, SearchBar, Link, Profile, Notification } from './components';
 
-const searchIcon = 'http://bit.ly/2E8L1NW';
-const profileIcon = 'http://bit.ly/2nfmDmL';
-const notificationIcon = 'http://bit.ly/2BtJKxZ';
 
-const Logo = ({logo}) => {
-  return <h1>{logo}</h1>
-}
 
-const SearchBar = () => {
-  return (
-    <div>
-      <img className='header-search-bar' src={searchIcon} alt=""/>
-      <input 
-        className='header-search-bar input'
-        placeholder="Search" 
-        type="text"/>
-    </div>
-    )
-}
-
-const Link = ({link}) => {
-  return (<a className="link-header" href="">{link}</a>)
-}
-
-const Profile = ({}) => {
-  return (<img className='header-profile' src={profileIcon} alt=""/>)
-}
-
-const Notification = ({}) => {
-  return (<img className='header-notification' src={notificationIcon} alt=""/>)
-}
 
 
 

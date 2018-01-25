@@ -1,0 +1,96 @@
+.container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  max-width: 100%;
+}
+
+.wrap    { 
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+} 
+
+
+.content-container {
+  margin: 1rem;
+  margin-top: 1rem;
+  background-color: grey;
+  width: 200px;
+  height: 200px;
+  z-index: 0;
+}
+
+
+.content-container img{
+  width: 200px;
+  height: 200px;
+}
+
+.content-onhover{
+  position: absolute;
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-onhover-span{
+  margin-top: 10px;
+  margin-left: 10px;
+  max-height: 20px;
+
+
+
+}
+
+.content-onhover:hover {
+  background-color: red;
+}
+
+.del-tag, .tag-click, .add-tag{
+  visibility: hidden;
+}
+
+.content-onhover:hover .del-tag{
+    background-color: cornflowerblue;
+    border: transparent;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none!important;
+    padding-left: 3px;
+    padding-right: 3px;
+    visibility: visible;
+}
+
+.content-onhover:hover .tag-click {
+    background-color: cornflowerblue;
+    color: white;
+    border: transparent;
+    font-size: 1rem;
+    text-decoration: none!important;
+    padding-left: 3px;
+    padding-right: 3px;
+    visibility: visible;
+
+}
+
+.content-onhover:hover .add-tag {
+    background-color: lightgreen;
+    color: white;
+    border: transparent;
+    font-size: 1rem;
+    text-decoration: none!important;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 3px;
+    visibility: visible;
+}

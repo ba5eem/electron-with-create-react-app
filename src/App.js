@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Header } from './components';
+import { Header, Frame } from './components';
 
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
     return(
         <div>
           <Header />
+          <Frame />
 
           
         </div>
