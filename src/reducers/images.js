@@ -25,24 +25,15 @@ const images = (state = [], action) => {
       let x = [...data,action.payload];
       return x;
     case DEL_TAG:
-      let y = data.filter((elem, i) => {
-        return elem.id === parseInt(action.payload.id);
-      })
-      let tags = y[0].tags;
-      let arr;
-      for(var i = 0; i < tags.length; i++){
-        if(tags[i] === action.payload.tag){
-          let idx = tags[i];
-          arr = tags.slice(idx,tags.length);
-        }
-      }
-
-      console.log(arr);
-
-
-
-
-      
+      let index = state.findIndex((elem) => {
+       return elem.id === parseInt(action.payload.id);
+     });
+     let elemTags = data[index].tags;
+     let newTags = elemTags.filter((elem) => {
+      return !(elem === action.payload.tag);
+     })
+     data[index].tags = newTags;
+     return [...data]; 
     default:
       return state;
   }
