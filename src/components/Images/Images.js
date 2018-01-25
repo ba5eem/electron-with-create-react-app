@@ -3,7 +3,6 @@ import './Images.css';
 
 
 
-
 const TagOverlay = ({obj}) => {
   return (
     <div className="tag-overlay">
@@ -54,6 +53,36 @@ const AddNewTagOverlay = ({obj,addNewTag,handleTag}) => {
     )
 }
 
+const AddNewImageUrl = ({obj,addNewImage,handleImgUrl}) => {
+  return (
+    <div className="add-overlay">
+      <br/>
+      <form>
+        <input 
+          type="text" 
+          className="add-tag-input"
+          onChange={handleImgUrl} 
+          placeholder="url:"/>
+        <br/>
+        <input 
+          onClick={addNewImage} 
+          id='cancel' 
+          type="button" 
+          className="add-tag-button" 
+          value="nah"/>
+        <span className="add-tag-span">....</span>
+        <input 
+          type="submit" 
+          id='add'
+          name={obj.id} 
+          onClick={addNewImage}
+          className="add-tag-button" 
+          value="add"/>
+      </form>
+    </div>
+    )
+}
+
 
 
 
@@ -64,36 +93,44 @@ class Images extends Component {
     this.state = {
       show: false,
       add: false,
+      newImg: false,
+      imgUrl: '',
       tag: ''
     }
     this.showTagOverlay=this.showTagOverlay.bind(this);
     this.addNewTag=this.addNewTag.bind(this);
     this.handleTag=this.handleTag.bind(this);
+    this.handleImgUrl=this.handleImgUrl.bind(this);
+    this.addNewImage=this.addNewImage.bind(this);
+    console.log(this.props)
   }
 
 
   showTagOverlay(e){
     e.preventDefault();
-    const {id, innerText} = e.target;
+    const {id, innerText,className} = e.target;
     if(id === 'close'){
       this.setState({show: !this.state.show})
     }
-    if(id === 'img'){
+    if(id === 'img' && className !== "newImage"){
       this.setState({show: !this.state.show})
     }
     if(id === 'new'){
       this.setState({add: !this.state.add})
     }
     if(id === 'tag'){
+      //this will show all data that matches the tag
       console.log(innerText);
     }
     if(id === 'del'){
       console.log('delete');
     }
+    if(className === 'newImage'){
+      this.setState({newImg: !this.state.newImg})
+    }
   }
 
   handleTag(e){
-    console.log(e.target.value);
     this.setState({tag: e.target.value})
   }
 
@@ -108,8 +145,25 @@ class Images extends Component {
       //name === id of obj thats getting new tag, terrible naming i know
       this.props.addNewTag(name,this.state.tag);
       this.setState({add: !this.state.add})
+    } 
+  }
+
+  handleImgUrl(e){
+    this.setState({imgUrl: e.target.value})
+  }
+
+  addNewImage(e){
+    e.preventDefault();
+    const {id} = e.target;
+    if(id === 'cancel'){
+      this.setState({newImg: !this.state.newImg})
     }
-    
+    if(id === 'add'){
+      //further tools to help populate already used tags, stretch goal
+      //name === id of obj thats getting new tag, terrible naming i know
+      this.props.addNewImage(this.state.imgUrl);
+      this.setState({newImg: !this.state.newImg})
+    } 
   }
 
 
@@ -122,12 +176,11 @@ class Images extends Component {
 
 
   render() {
-    const { show, add } = this.state;
-    const {id,source,tags} = this.props.src;
-
+    const { show, add, newImg } = this.state;
+    const {id,source} = this.props.src;
     return (
       <div
-        className="img-container" 
+        className='img-container' 
         id="img" 
         onClick={(e)=>this.showTagOverlay(e)}>
 
@@ -144,10 +197,19 @@ class Images extends Component {
           addNewTag={this.addNewTag} /> 
         : null }
 
+        {newImg ? 
+        <AddNewImageUrl
+          obj={this.props.src} 
+          handleImgUrl={this.handleImgUrl} 
+          addNewImage={this.addNewImage} /> 
+        : null }
+        
+
         <img 
           id="img" 
           src={source} 
-          alt="" 
+          alt=""
+          className={id} 
           style={image}/>
         
       </div>

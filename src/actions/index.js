@@ -2,6 +2,7 @@
 
 export const LOAD_IMAGES = 'LOAD_IMAGES';
 export const ADD_TAG = 'ADD_TAG';
+export const ADD_IMAGE = 'ADD_IMAGE';
 
 
 export const loadImages = () => {
@@ -19,6 +20,18 @@ export const addTag = (id,tag) => {
   }
   return{
     type: ADD_TAG,
+    payload: local
+  }
+}
+
+export const addImage = (url) => {
+  let local = {
+    id: 3,
+    source: url,
+    tags: []
+  }
+  return{
+    type: ADD_IMAGE,
     payload: local
   }
 }
