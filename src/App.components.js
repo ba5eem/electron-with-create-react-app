@@ -4,7 +4,7 @@ import { Main, Header, Images, Notes } from './components';
 
 
 
-export const RenderImages = ({tagSearch,deleteTag,addNewImage,addNewTag, images}) => {
+export const RenderImages = ({notFound,tagSearch,deleteTag,addNewImage,addNewTag, images}) => {
   return (
       <div className="main wrap">
           {images.map((elem,i) => {
@@ -14,11 +14,15 @@ export const RenderImages = ({tagSearch,deleteTag,addNewImage,addNewTag, images}
                 addNewImage={addNewImage} 
                 deleteTag={deleteTag}
                 tagSearch={tagSearch}
+                notFound={notFound}
                 key={i}  
                 src={elem}/>
               )
             }) 
           }
+          {notFound ?
+            <div className="not-found">This is a live search, as you type your results will appear here...At this time no tags are found that match your search...</div>
+            : null }
         </div>
         )
 }
@@ -30,7 +34,6 @@ export function tagFilter(data,tag){
     data.map((elem,i) => {
       elem.tags.filter(elem => {
         if(elem === tag){
-          console.log(i);
           idx.push(i);
         }
       })

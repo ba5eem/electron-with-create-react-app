@@ -55,7 +55,13 @@ class App extends Component {
   }
 
   tagSearchBar(e){
-    this.setState({tag: e.target.value})
+    let {value} = e.target;
+    if(value.length !== 0){
+      this.setState({tag: value})
+    } 
+    if(value.length === 0){
+      this.setState({tag: undefined})
+    }
   }
 
 
@@ -65,6 +71,7 @@ class App extends Component {
     const { view,tag } = this.state;
     const data = this.props.images
     let images = tagFilter(data,tag);
+    let notFound = images.length === 0 ? true : false;
     
     switch(view) {
       case 'Images':
@@ -78,6 +85,7 @@ class App extends Component {
               addNewImage={this.addNewImage}
               deleteTag={this.deleteTag}
               tagSearch={this.tagSearch} 
+              notFound={notFound}
               images={images} />
           </div> )
       case 'Notes':

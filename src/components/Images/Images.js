@@ -133,6 +133,7 @@ class Images extends Component {
           alt=""
           className={src.id} 
           style={image}/>
+
         
       </div>
 
