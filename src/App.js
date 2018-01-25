@@ -59,20 +59,27 @@ class App extends Component {
   render() {
     const { view,tag } = this.state;
     const data = this.props.images
-    let images = data;
-    let idx;
+    let images = [];
+    let idx = [];
     data.map((elem,i) => {
       elem.tags.filter(elem => {
         if(elem === tag){
-          idx = i;
+          console.log(i);
+          idx.push(i);
         }
       })
     })
-    if(idx !== undefined){
-      images = data.filter((elem,i) => {
-        return elem.id === idx;
+    if(tag !== undefined){
+        idx.map(i => {
+        images.push(data[i])
       })
     }
+    else{
+      images = data;
+    }
+    
+
+    
 
     switch(view) {
       case 'Images':
