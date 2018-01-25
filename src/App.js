@@ -23,6 +23,7 @@ class App extends Component {
     this.addNewImage=this.addNewImage.bind(this)
     this.deleteTag=this.deleteTag.bind(this)
     this.tagSearch=this.tagSearch.bind(this)
+    this.tagSearchBar=this.tagSearchBar.bind(this)
   }
 
   componentWillMount() {
@@ -53,6 +54,10 @@ class App extends Component {
     this.setState({tag: tag})
   }
 
+  tagSearchBar(e){
+    this.setState({tag: e.target.value})
+  }
+
 
 
 
@@ -65,7 +70,9 @@ class App extends Component {
       case 'Images':
         return (
           <div>
-            <Header changeView={(e)=>this.changeView(e)}/>
+            <Header 
+              tagSearch={this.tagSearchBar}
+              changeView={(e)=>this.changeView(e)}/>
             <RenderImages 
               addNewTag={this.addNewTag}
               addNewImage={this.addNewImage}

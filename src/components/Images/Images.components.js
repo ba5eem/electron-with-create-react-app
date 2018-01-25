@@ -1,6 +1,9 @@
 import React from 'react';
 
+const link = '< >';
+
 export const TagOverlay = ({obj}) => {
+  console.log(obj);
   return (
     <div className="tag-overlay">
       <a id='new' href="" className="tag-new">+</a>
@@ -15,6 +18,7 @@ export const TagOverlay = ({obj}) => {
       })}
       <br/>
       <a id='close' href="" className="tag-close">close</a>
+      <a id='link' href={obj.source} allow='true' className="tag-link">{link}</a>
 
     </div>
     )

@@ -23,24 +23,29 @@ class Images extends Component {
 
 
   showTagOverlay(e){
-    e.preventDefault();
     const {id, innerText,className,name,title} = e.target;
     if(id === 'close'){
+      e.preventDefault();
       this.setState({show: !this.state.show})
     }
     if(id === 'img' && className !== "newImage"){
+      e.preventDefault();
       this.setState({show: !this.state.show})
     }
     if(id === 'new'){
+      e.preventDefault();
       this.setState({add: !this.state.add})
     }
     if(id === 'tag'){
+      e.preventDefault();
       this.props.tagSearch(innerText);
     }
     if(id === 'del'){
+      e.preventDefault();
       this.props.deleteTag(name,title);
     }
     if(className === 'newImage'){
+      e.preventDefault();
       this.setState({newImg: !this.state.newImg})
     }
   }

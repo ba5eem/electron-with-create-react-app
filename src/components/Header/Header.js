@@ -25,6 +25,7 @@ class Header extends Component {
                 return <HeaderView key={i} title={elem} changeView={changeView} />
               })}
             </ul>
+          <input type="text" onChange={this.props.tagSearch} placeholder="Search by tag:"/>
         </nav>
       </div>
     );

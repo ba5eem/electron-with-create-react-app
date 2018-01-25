@@ -69,6 +69,17 @@
     margin-right: 10px;
 }
 
+.tag-link {
+    background-color: powderblue;
+    color: white;
+    border: transparent;
+    font-size: 1rem;
+    text-decoration: none!important;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 10px;
+}
+
 .tag-new {
     background-color: lightgreen;
     color: white;
