@@ -53,7 +53,7 @@ class App extends Component {
         <div>
           <Header filterTag={this.filterTag} />
           {notFound ? <NotFound /> : null }
-          <div className="container wrap">
+          <div className="grid">
             {data.map((elem,i) => {
               return (
                     <Frame

@@ -31,6 +31,31 @@ export const data = [
     id: 4,
     src: moon,
     tags: ['movie','oscar','super','car']
+  },
+  {
+    id: 0,
+    src: 'https://images-na.ssl-images-amazon.com/images/S/cmx-images-prod/Item/471463/471463._SX360_QL80_TTD_.jpg',
+    tags: []
+  },
+  {
+    id: 1,
+    src: src1,
+    tags: ['home','island','hawaii']
+  },
+  {
+    id: 2,
+    src: src2,
+    tags: ['tesla','car','goals']
+  },
+  {
+    id: 3,
+    src: src,
+    tags: ['anime','babe','super','car']
+  },
+  {
+    id: 4,
+    src: moon,
+    tags: ['movie','oscar','super','car']
   }
 ];
 

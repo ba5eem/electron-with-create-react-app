@@ -3,10 +3,6 @@ import './Header.css';
 import { Logo, SearchBar, Link, Profile, Notification } from './components';
 
 
-
-
-
-
 class Header extends Component {
   constructor(props){
     super(props);
