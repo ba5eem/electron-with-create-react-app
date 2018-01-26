@@ -27,8 +27,8 @@ export const addTag = (id,tag) => {
 
 export const addImage = (url) => {
   let local = {
-    id: 3,
-    source: url,
+    id: 12,
+    src: url,
     tags: []
   }
   return{

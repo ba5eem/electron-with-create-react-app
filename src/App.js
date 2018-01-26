@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { loadImages,addTag } from './actions/imageActions';
+import { loadImages,addTag, addImage } from './actions/imageActions';
 import { Header, Frame, tagFilter, NotFound } from './components';
 import './App.css';
 
@@ -18,6 +18,7 @@ class App extends Component {
     }
     this.addNewTag=this.addNewTag.bind(this)
     this.filterTag=this.filterTag.bind(this)
+    this.newPin=this.newPin.bind(this)
   }
 
   componentWillMount() {
@@ -37,6 +38,10 @@ class App extends Component {
     }
   }
 
+  newPin(url){
+    this.props.addImage(url);
+  }
+
 
 
 
@@ -51,9 +56,9 @@ class App extends Component {
 
     return(
         <div>
-          <Header filterTag={this.filterTag} />
+          <Header newPin={this.newPin} filterTag={this.filterTag} />
           {notFound ? <NotFound /> : null }
-          <div className="grid">
+          <div className="container wrap">
             {data.map((elem,i) => {
               return (
                     <Frame
@@ -82,7 +87,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     loadImages:loadImages,
-    addTag:addTag
+    addTag:addTag,
+    addImage:addImage
   },dispatch)
 }
 

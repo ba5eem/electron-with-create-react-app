@@ -60,7 +60,7 @@ class Frame extends Component {
     return(
         
         
-        <div className="grid-item gridbox">
+        <div className="content-container">
           {adding ? 
             <TagInput
               elem={elem} 

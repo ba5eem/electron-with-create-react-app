@@ -29,41 +29,8 @@
   opacity: 0.5;
 }
 
-/**/
 
-* { box-sizing: border-box; }
 
-body { font-family: sans-serif; }
-
-/* ---- grid ---- */
-
-.grid {
-  max-width: 900px;
-  break-inside: avoid;
-
-}
-
-/* clearfix */
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-
-}
-
-/* ---- grid-item ---- */
-
-.grid-item {
-  width: 200px;
-  height: auto;
-  float: left;
-  margin: 10px;
-  break-inside: avoid;
-}
-
-.gridbox {
-  border-radius: 5px;
-}
 
 
 

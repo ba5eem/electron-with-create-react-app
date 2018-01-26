@@ -23,7 +23,9 @@ const images = (state = [], action) => {
         return [...data];
     }
     case ADD_IMAGE:
+
       let x = [...data,action.payload];
+      console.log(x);
       return x;
     case DEL_TAG:
       let index = state.findIndex((elem) => {

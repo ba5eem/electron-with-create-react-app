@@ -2,7 +2,8 @@ import React from 'react';
 
 const searchIcon = 'http://bit.ly/2E8L1NW';
 const profileIcon = 'http://bit.ly/2nfmDmL';
-const notificationIcon = 'http://bit.ly/2BtJKxZ';
+const addIcon = 'https://png.icons8.com/metro/1600/plus.png';
+const saveIcon = 'http://bit.ly/2lYWg6g';
 
 export const Logo = ({logo}) => {
   return <h1>{logo}</h1>
@@ -11,7 +12,6 @@ export const Logo = ({logo}) => {
 export const SearchBar = ({searchTag}) => {
   return (
     <div>
-      <img className='header-search-bar' src={searchIcon} alt=""/>
       <input
         onChange={searchTag} 
         className='header-search-bar input'
@@ -29,6 +29,15 @@ export const Profile = ({}) => {
   return (<img className='header-profile' src={profileIcon} alt=""/>)
 }
 
-export const Notification = ({}) => {
-  return (<img className='header-notification' src={notificationIcon} alt=""/>)
+export const PinPost = ({pin,newPin}) => {
+  const src = pin ? saveIcon : addIcon;
+  return (<img 
+            onClick={newPin} 
+            className='header-notification' 
+            src={src} 
+            alt=""/>)
+}
+
+export const UrlInput = ({handleUrl}) => {
+  return <input onChange={handleUrl} type="text" placeholder='URL:'/>
 }
