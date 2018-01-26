@@ -56,20 +56,13 @@ class App extends Component {
 
     return(
         <div>
-          <Header newPin={this.newPin} filterTag={this.filterTag} />
-          {notFound ? <NotFound /> : null }
-          <div className="container wrap">
-            {data.map((elem,i) => {
-              return (
-                    <Frame
-                      addNewTag={this.addNewTag}
-                      filterTag={this.filterTag}
-                      elem={elem}
-                      i={i} 
-                      key={i} />
-                    )
-            })}
+          <Header/>
+          <div id="masonry">
+          {data.map((elem, i) => {
+            return <img src={elem.src}/>
+          })}
           </div>
+          
         </div>
       )
   }
