@@ -9,6 +9,7 @@ const images = (state = [], action) => {
 
     case LOAD_IMAGES:
       return data;
+      
     case ADD_TAG:
       let {id,tag} = action.payload;
       let res = data.filter((elem,i) => {

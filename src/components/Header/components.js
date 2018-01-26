@@ -8,11 +8,12 @@ export const Logo = ({logo}) => {
   return <h1>{logo}</h1>
 }
 
-export const SearchBar = () => {
+export const SearchBar = ({searchTag}) => {
   return (
     <div>
       <img className='header-search-bar' src={searchIcon} alt=""/>
-      <input 
+      <input
+        onChange={searchTag} 
         className='header-search-bar input'
         placeholder="Search" 
         type="text"/>
@@ -20,8 +21,8 @@ export const SearchBar = () => {
     )
 }
 
-export const Link = ({link}) => {
-  return (<a className="link-header" href="">{link}</a>)
+export const Link = ({link,goHome}) => {
+  return (<a onClick={goHome} className="link-header" href="">{link}</a>)
 }
 
 export const Profile = ({}) => {

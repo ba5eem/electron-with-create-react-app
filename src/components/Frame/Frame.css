@@ -21,16 +21,14 @@
 .content-container {
   margin: 1rem;
   margin-top: 1rem;
-  background-color: grey;
   width: 200px;
-  height: 200px;
   z-index: 0;
+
 }
 
 
 .content-container img{
   width: 200px;
-  height: 200px;
   border-radius: 5px;
 }
 
@@ -42,12 +40,15 @@
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
+  border-radius: 5px;
+
 }
 
 .content-onhover-span{
   margin-top: 10px;
   margin-left: 10px;
   max-height: 20px;
+  
 }
 
 .content-onhover:hover {
@@ -58,6 +59,7 @@
 .del-tag, .tag-click, .add-tag, .link-tag{
   visibility: hidden;
 }
+
 
 .content-onhover:hover .del-tag{
     background-color: cornflowerblue;
@@ -104,5 +106,46 @@
     padding-right: 5px;
     margin-left: 3px;
     visibility: visible;
+}
+
+.image-style {
+  width: 100%;
+  height: auto;
+}
+
+.tag-input input{
+  margin-bottom: 4px;
+  border: transparent;
+  outline: none;
+  border-radius: 5px;
+  vertical-align: middle;
+  width: 100%;
+  background-color: white;
+}
+
+.cancel-input {
+  background-color: black;
+  color: white;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-left: 1rem;
+  text-decoration: none!important; 
+  border-radius: 5px;
+
+}
+
+.save-input {
+  background-color: lightgreen;
+  color: black;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+  text-decoration: none!important;
+  margin-bottom: 1px;
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }
 

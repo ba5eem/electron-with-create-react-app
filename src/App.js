@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Header, Frame } from './components';
+import { loadImages,addTag } from './actions/imageActions';
+import { Header, Frame, tagFilter, NotFound } from './components';
 import './App.css';
 
-const data = ['1','2'];
+
 
 
 class App extends Component {
@@ -12,29 +13,77 @@ class App extends Component {
     super(props);
 
     this.state = {
+      tag: undefined
 
+    }
+    this.addNewTag=this.addNewTag.bind(this)
+    this.filterTag=this.filterTag.bind(this)
+  }
+
+  componentWillMount() {
+    this.props.loadImages();
+  }
+
+  addNewTag(id,tag){
+    this.props.addTag(id, tag)
+  }
+
+  filterTag(tag){
+    if(tag.length !==0){
+      this.setState({tag: tag})
+    }
+    if(tag.length === 0){
+      this.setState({tag: undefined})
     }
   }
 
 
-  renderFrames(){
-    return(<Frame />)
-  }
 
 
 
 
 
   render(){
+    const {images} = this.props;
+    const {tag} = this.state;
+    const data = tagFilter(images,tag)
+    let notFound = data.length === 0 ? true : false;
+
     return(
         <div>
-          <Header />
+          <Header filterTag={this.filterTag} />
+          {notFound ? <NotFound /> : null }
           <div className="container wrap">
-            {data.map(this.renderFrames)}
+            {data.map((elem,i) => {
+              return (
+                    <Frame
+                      addNewTag={this.addNewTag}
+                      filterTag={this.filterTag}
+                      elem={elem}
+                      i={i} 
+                      key={i} />
+                    )
+            })}
           </div>
         </div>
       )
   }
 }
 
-export default App;
+
+
+
+const mapStateToProps = (state) => {
+  return {
+    images: state.images
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadImages:loadImages,
+    addTag:addTag
+  },dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

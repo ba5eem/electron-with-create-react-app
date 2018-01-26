@@ -1,34 +1,81 @@
 import React from 'react';
 
 
-const img = 'http://img-aws.ehowcdn.com/560x560p/photos.demandstudios.com/getty/article/81/28/86480446.jpg';
 const link = '< >';
 
-export const AddTagButton = () => {
+
+export const AddTagButton = ({elem,addNewTag}) => {
   return (
     <span className="content-onhover-span">
-      <a id='add' href="" className="add-tag">+</a>
+      <a 
+        onClick={addNewTag} 
+        id='add' 
+        href="" 
+        className="add-tag">+</a>
     </span>
     )
 }
 
-export const Tags = () => {
+export const Tags = ({elem,findTag}) => {
+  return (
+    <div className="tags-wrapper">
+      {elem.tags.map((tag,i) => {
+        return (
+        <span key={i} className="content-onhover-span">
+          <a 
+            id='del' 
+            href="" 
+            className="del-tag">x</a>
+          <a 
+            onClick={findTag} 
+            name={tag} 
+            id='tag' 
+            href="" 
+            className="tag-click">{tag}</a>
+        </span>
+        )
+      })}
+  </div>
+  )
+
+  
+}
+
+export const OrginalLink = ({elem}) => {
   return (
     <span className="content-onhover-span">
-      <a id='del' href="" className="del-tag">x</a>
-      <a id='tag' href="" className="tag-click">ssss</a>
+      <a 
+        id='add' 
+        href={elem.src} 
+        className="link-tag">{link}</a>
     </span>
     )
 }
 
-export const OrginalLink = () => {
-  return (
-    <span className="content-onhover-span">
-      <a id='add' href="" className="link-tag">{link}</a>
-    </span>
-    )
+export const ImageSrc = ({elem}) => {
+  return <img className='image-style' src={elem.src} alt=""/> 
 }
 
-export const ImageSrc = () => {
-  return <img src={img} alt=""/> 
+
+export const TagInput = ({elem, tagStatus, handleTagChange}) => {
+  return (
+    <div className="tag-input">
+      <input 
+        onChange={handleTagChange} 
+        className="input" 
+        type="text" 
+        placeholder="tag:"/>
+      <a 
+        id={elem.id} 
+        name="save" 
+        onClick={tagStatus} 
+        className="save-input" 
+        href="">SAVE</a>
+      <a 
+        id="cancel"
+        onClick={tagStatus} 
+        className="cancel-input" 
+        href="">CANCEL</a>
+    </div>
+    )
 }

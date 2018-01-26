@@ -13,16 +13,31 @@ class Header extends Component {
 
     this.state = {
 
+
     }
+    this.goHome=this.goHome.bind(this);
+    this.searchTag=this.searchTag.bind(this);
   }
+
+  goHome(e){
+    e.preventDefault();
+    this.props.filterTag('')
+  }
+
+  searchTag(e){
+    this.props.filterTag(e.target.value);
+  }
+
+
+
 
   render(){
     return(
         <div>
           <nav className="navbar-header">
             <Logo logo='B'/>
-            <SearchBar />
-            <Link link="Home"/>
+            <SearchBar searchTag={this.searchTag} />
+            <Link goHome={this.goHome} link="Home"/>
             <Link link="Explore"/>
             <Profile />
             <Notification />
